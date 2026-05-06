@@ -1,0 +1,68 @@
+baseURL = "https://crowsnest.blacklanternsecurity.com/"
+defaultContentLanguage = "en"
+title = "Black Lantern Security: Crow's Nest"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+pagination.pagerSize = 10
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+[params]
+env = "production"
+title = "Black Lantern Security: Crow's Nest"
+description = "Weekly curated security news, techniques, tools, and exploits from across the community."
+keywords = ["security", "infosec", "weekly", "tools", "exploits", "techniques", "blacklanternsecurity"]
+author = "Black Lantern Security"
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowWordCount = false
+ShowRssButtonInSectionTermList = true
+disableSpecial1stPost = false
+disableScrollToTop = false
+comments = false
+
+[params.homeInfoParams]
+Title = "Crow's Nest"
+Content = """
+Welcome aboard. Crow's Nest is a weekly roundup of news, techniques, tools, and exploits from across the security community — curated by [Black Lantern Security](https://www.blacklanternsecurity.com).
+"""
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/blacklanternsecurity"
+
+[[params.socialIcons]]
+name = "rss"
+url = "/index.xml"
+
+[[menu.main]]
+identifier = "posts"
+name = "Posts"
+url = "/posts/"
+weight = 10
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 20
+
+[[menu.main]]
+identifier = "archives"
+name = "Archives"
+url = "/archives/"
+weight = 30
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
