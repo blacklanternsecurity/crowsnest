@@ -7,16 +7,16 @@ tags: ["meta"]
 
 Welcome aboard. **Crow's Nest** is a weekly curated roundup of security news, techniques, tools, and exploits, published by [Black Lantern Security](https://www.blacklanternsecurity.com).
 
-## What you can expect
+## What You Can Expect
 
 Each weekly edition will cover:
 
-- **News** — meaningful security news from the past week
-- **Techniques & Write-ups** — interesting research, blog posts, and analyses
-- **Tools & Exploits** — new offensive and defensive tooling, PoCs, and exploits
+- **News**: meaningful security news from the past week.
+- **Techniques and Write-ups**: interesting research, blog posts, and analyses.
+- **Tools and Exploits**: new offensive and defensive tooling, PoCs, and exploits.
 
-Posts are curated by humans. The grunt work of scraping feeds and keeping tabs on the community is automated, but every item that lands here is read and chosen by an editor.
+An editor reads and selects every item that lands here. Automation handles the heavy lifting of scraping feeds and keeping tabs on the community, but every post is curated by hand.
 
-## What's next
+## What's Next
 
 The first real edition lands soon. In the meantime, you can subscribe to the [RSS feed](/index.xml).

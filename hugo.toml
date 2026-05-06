@@ -35,7 +35,7 @@ comments = false
 [params.homeInfoParams]
 Title = "Crow's Nest"
 Content = """
-Welcome aboard. Crow's Nest is a weekly roundup of news, techniques, tools, and exploits from across the security community — curated by [Black Lantern Security](https://www.blacklanternsecurity.com).
+Welcome aboard. Crow's Nest is a weekly roundup of news, techniques, tools, and exploits from across the security community, curated by [Black Lantern Security](https://www.blacklanternsecurity.com).
 """
 
 [[params.socialIcons]]
