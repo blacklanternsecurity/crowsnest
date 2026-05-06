@@ -17,8 +17,8 @@ minifyOutput = true
 [params]
 env = "production"
 title = "Black Lantern Security: Crow's Nest"
-description = "Weekly curated security news, techniques, tools, and exploits from across the community."
-keywords = ["security", "infosec", "weekly", "tools", "exploits", "techniques", "blacklanternsecurity"]
+description = "A curated roundup of security news, techniques, tools, and exploits from across the community."
+keywords = ["security", "infosec", "tools", "exploits", "techniques", "writeups", "roundup", "blacklanternsecurity"]
 author = "Black Lantern Security"
 defaultTheme = "auto"
 ShowReadingTime = true
@@ -35,7 +35,7 @@ comments = false
 [params.homeInfoParams]
 Title = "Crow's Nest"
 Content = """
-Welcome aboard. Crow's Nest is a weekly roundup of news, techniques, tools, and exploits from across the security community, curated by [Black Lantern Security](https://www.blacklanternsecurity.com).
+Welcome aboard. Crow's Nest is a curated roundup of news, techniques, tools, and exploits from across the security community, brought to you by [Black Lantern Security](https://www.blacklanternsecurity.com).
 """
 
 [[params.socialIcons]]
@@ -64,5 +64,21 @@ name = "Archives"
 url = "/archives/"
 weight = 30
 
+[[menu.main]]
+identifier = "search"
+name = "Search"
+url = "/search/"
+weight = 40
+
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1000
+threshold = 0.4
+minMatchCharLength = 0
+limit = 10
+keys = ["title", "permalink", "summary", "content"]

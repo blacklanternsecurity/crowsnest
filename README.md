@@ -1,6 +1,6 @@
 # Black Lantern Security: Crow's Nest
 
-Weekly curated security blog. Source for [crowsnest.blacklanternsecurity.com](https://crowsnest.blacklanternsecurity.com).
+Curated security blog. Source for [crowsnest.blacklanternsecurity.com](https://crowsnest.blacklanternsecurity.com).
 
 ## Stack
 
