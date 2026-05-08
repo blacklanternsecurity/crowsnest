@@ -14,6 +14,12 @@ pagination.pagerSize = 10
 disableXML = true
 minifyOutput = true
 
+# Allow raw HTML in markdown content. The compiler emits <details><summary>
+# blocks for the "More this week" disclosures; without this, Goldmark
+# strips the tags and the long-tail items render as a flat un-collapsed list.
+[markup.goldmark.renderer]
+unsafe = true
+
 [params]
 env = "production"
 title = "Black Lantern Security: Crow's Nest"
