@@ -14,10 +14,11 @@
 .site-banner img {
     display: block;
     margin: 0 auto;
-    height: 64px;
-    width: auto;
-    max-width: 100%;
-    border-radius: 8px;
+    width: 100%;
+    /* Roughly one-third the source banner's natural width (1983px). */
+    max-width: 660px;
+    height: auto;
+    border-radius: 10px;
     transition: opacity 0.15s ease;
 }
 .site-banner:hover img { opacity: 0.85; }
@@ -28,8 +29,6 @@
     margin-bottom: 0.5rem;
 }
 .site-banner-home img {
-    height: auto;
-    width: 100%;
     max-width: 1000px;
     border-radius: 12px;
 }
@@ -37,11 +36,6 @@
 /* Tighten the gap between the banner and PaperMod's nav since the banner
    already provides visual separation from the top of the viewport. */
 .site-banner + .header { padding-top: 0.4rem; }
-
-/* Mobile: shrink the compact banner so it doesn't dominate small screens. */
-@media (max-width: 640px) {
-    .site-banner img { height: 44px; }
-}
 
 /* PaperMod's main column defaults to 720px. Roundup posts are wide-by-nature
    (long links + bullet lists), so let them spread up to 1100px while still
