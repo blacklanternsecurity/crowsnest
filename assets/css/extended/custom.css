@@ -1,3 +1,20 @@
+/* Homepage banner. Replaces PaperMod's text H1 when homeInfoParams.BannerImage
+   is set (see layouts/_partials/home_info.html). The image already includes
+   the site name, so the H1 carries semantic weight via the alt attribute. */
+.home-banner-heading {
+    margin: 0 0 1.4rem;
+    line-height: 0;
+    text-align: center;
+}
+.home-banner-heading .home-banner {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
 /* PaperMod's main column defaults to 720px. Roundup posts are wide-by-nature
    (long links + bullet lists), so let them spread up to 1100px while still
    capping on ultra-wide displays. */
