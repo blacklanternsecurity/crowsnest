@@ -1,0 +1,79 @@
+/* PaperMod's main column defaults to 720px. Roundup posts are wide-by-nature
+   (long links + bullet lists), so let them spread up to 1100px while still
+   capping on ultra-wide displays. */
+:root {
+    --main-width: min(95vw, 1100px);
+}
+
+.main {
+    max-width: calc(var(--main-width) + var(--gap) * 2);
+}
+
+/* Slight font drop in the post body so a 1000+ px column doesn't feel
+   oversized. */
+.post-content {
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+.post-content p { margin: 0.7em 0; }
+.post-content blockquote {
+    margin: 0.5em 0 0.9em;
+    padding: 0.4em 0.9em;
+    font-size: 0.92rem;
+}
+.post-content ul,
+.post-content ol { margin: 0.5em 0 0.9em; padding-left: 1.4em; }
+.post-content li { margin: 0.25em 0; }
+.post-content details {
+    margin: 1.2em 0;
+    padding: 0.6em 0.95em;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--code-bg);
+}
+.post-content details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--secondary);
+    user-select: none;
+}
+.post-content details[open] summary { margin-bottom: 0.6em; }
+
+/* Per-post tab strip (Overview / News / Techniques / Tools).
+   Built at runtime by extend_footer.html. The strip lives at the top of
+   the article body; sections are wrapped in .post-section divs that get
+   shown/hidden on tab click. */
+.post-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1rem 0 1.4rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--theme);
+    z-index: 5;
+}
+.post-tab {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.32rem 0.95rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.post-tab:hover {
+    background: var(--code-bg);
+    color: var(--primary);
+    border-color: var(--secondary);
+}
+.post-tab.active {
+    background: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
+}
+.post-section { /* placeholder; shown/hidden via inline style */ }

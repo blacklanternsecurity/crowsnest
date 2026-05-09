@@ -1,0 +1,85 @@
+{{- /*
+  Roundup post tab strip. Looks for the H2 section headings inside
+  .post-content and wraps each section (h2 + everything until the next h2)
+  in a div the JS can show/hide. Tab strip: Overview (default, shows all),
+  one button per section. URL hash drives initial tab; clicking persists.
+  Quietly no-ops on non-roundup posts (fewer than 2 H2s).
+*/ -}}
+<script>
+(function () {
+  var post = document.querySelector('.post-content[itemprop="articleBody"]')
+          || document.querySelector('.post-content');
+  if (!post) return;
+
+  var headings = post.querySelectorAll(':scope > h2');
+  if (headings.length < 2) return;
+
+  // Group each heading with its sibling content, up to (but not including)
+  // the next heading.
+  var groups = [];
+  for (var i = 0; i < headings.length; i++) {
+    var h = headings[i];
+    var stop = headings[i + 1] || null;
+    var els = [h];
+    var n = h.nextElementSibling;
+    while (n && n !== stop) { els.push(n); n = n.nextElementSibling; }
+    groups.push({ id: h.id || ('section-' + i), label: h.textContent.trim(), elements: els });
+  }
+
+  // Wrap each group in a div so we can show/hide as a unit.
+  var wrappers = groups.map(function (g) {
+    var div = document.createElement('div');
+    div.className = 'post-section';
+    div.dataset.sectionId = g.id;
+    var first = g.elements[0];
+    first.parentNode.insertBefore(div, first);
+    g.elements.forEach(function (el) { div.appendChild(el); });
+    return div;
+  });
+
+  // Build the tab strip.
+  var nav = document.createElement('nav');
+  nav.className = 'post-tabs';
+  nav.setAttribute('aria-label', 'Post sections');
+
+  var buttons = [];
+  function makeTab(id, label) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'post-tab';
+    b.dataset.target = id;
+    b.textContent = label;
+    b.addEventListener('click', function () { activate(id, true); });
+    nav.appendChild(b);
+    buttons.push(b);
+  }
+  makeTab('overview', 'Overview');
+  groups.forEach(function (g) {
+    // Trim the visible label to the first noun so the strip stays compact:
+    // "Techniques and Write-ups" -> "Techniques", "Tools and Exploits" -> "Tools".
+    var short = g.label.split(/\s+and\s+|\s*&\s*/i)[0].trim();
+    makeTab(g.id, short);
+  });
+
+  function activate(id, push) {
+    wrappers.forEach(function (w) {
+      w.style.display = (id === 'overview' || w.dataset.sectionId === id) ? '' : 'none';
+    });
+    buttons.forEach(function (b) {
+      b.classList.toggle('active', b.dataset.target === id);
+    });
+    if (push) {
+      var newHash = id === 'overview' ? '' : '#' + id;
+      var target = location.pathname + location.search + newHash;
+      history.replaceState(null, '', target);
+    }
+  }
+
+  wrappers[0].parentNode.insertBefore(nav, wrappers[0]);
+
+  var validIds = { 'overview': 1 };
+  groups.forEach(function (g) { validIds[g.id] = 1; });
+  var initial = location.hash.replace('#', '');
+  activate(validIds[initial] ? initial : 'overview', false);
+})();
+</script>
