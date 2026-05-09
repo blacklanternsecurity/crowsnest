@@ -1,18 +1,46 @@
-/* Homepage banner. Replaces PaperMod's text H1 when homeInfoParams.BannerImage
-   is set (see layouts/_partials/home_info.html). The image already includes
-   the site name, so the H1 carries semantic weight via the alt attribute. */
-.home-banner-heading {
-    margin: 0 0 1.4rem;
+/* Site banner shown on every page (see layouts/_partials/header.html).
+   On the homepage (.site-banner-home class), it acts as a hero: full
+   column width up to a cap, with a generous height. On inner pages,
+   the same image is shown compact so it stays as a navigational logo
+   without dominating the viewport. */
+.site-banner {
+    display: block;
+    margin: 1rem auto 0;
+    max-width: calc(var(--main-width) + var(--gap) * 2);
+    padding: 0 var(--gap);
     line-height: 0;
     text-align: center;
 }
-.home-banner-heading .home-banner {
+.site-banner img {
     display: block;
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
     margin: 0 auto;
+    height: 64px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    transition: opacity 0.15s ease;
+}
+.site-banner:hover img { opacity: 0.85; }
+
+/* Hero variant on the homepage. */
+.site-banner-home {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.site-banner-home img {
+    height: auto;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 12px;
+}
+
+/* Tighten the gap between the banner and PaperMod's nav since the banner
+   already provides visual separation from the top of the viewport. */
+.site-banner + .header { padding-top: 0.4rem; }
+
+/* Mobile: shrink the compact banner so it doesn't dominate small screens. */
+@media (max-width: 640px) {
+    .site-banner img { height: 44px; }
 }
 
 /* PaperMod's main column defaults to 720px. Roundup posts are wide-by-nature

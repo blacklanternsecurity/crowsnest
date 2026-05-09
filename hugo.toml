@@ -38,9 +38,11 @@ disableSpecial1stPost = false
 disableScrollToTop = false
 comments = false
 
+[params.banner]
+image = "/banner.png"
+alt = "Crow's Nest — Black Lantern Security News"
+
 [params.homeInfoParams]
-BannerImage = "/banner.png"
-BannerAlt = "Crow's Nest — Black Lantern Security News"
 Content = """
 Welcome aboard. Crow's Nest is a curated roundup of news, techniques, tools, and exploits from across the security community, brought to you by [Black Lantern Security](https://www.blacklanternsecurity.com).
 """

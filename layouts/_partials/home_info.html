@@ -1,16 +1,12 @@
 {{- /*
-  Override of PaperMod's home_info partial. When site.Params.homeInfoParams.BannerImage
-  is set, render the banner image as the H1 (preserving heading semantics for SEO and
-  screen readers via the alt attribute) instead of plain-text title. Falls back to the
-  default text-title behavior when BannerImage is absent.
+  Override of PaperMod's home_info partial. Skips the H1 entirely when
+  Title is empty (the site banner in header.html already serves as the
+  visual heading). Falls back to the default text-title behavior when
+  Title is set.
 */ -}}
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
-    {{- if .BannerImage }}
-    <h1 class="home-banner-heading">
-        <img src="{{ .BannerImage | absURL }}" alt="{{ default site.Title .BannerAlt }}" class="home-banner">
-    </h1>
-    {{- else }}
+    {{- if .Title }}
     <header class="entry-header">
         <h1>{{ .Title | markdownify }}</h1>
     </header>
