@@ -53,7 +53,7 @@ url = "https://github.com/blacklanternsecurity"
 
 [[params.socialIcons]]
 name = "rss"
-url = "/index.xml"
+url = "https://feedpress.me/crowsnest"
 
 [[menu.main]]
 identifier = "posts"
