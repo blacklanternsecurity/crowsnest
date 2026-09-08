@@ -85,36 +85,19 @@ const renderResults = (results) => {
     for (const result of results) {
         const item = result.item;
         const li = document.createElement('li');
-        li.style.display = 'flex';
-        li.style.flexDirection = 'column';
-        li.style.gap = '0.25rem';
-        li.style.padding = '0.5rem 0';
-
-        const titleRow = document.createElement('div');
-        titleRow.style.display = 'flex';
-        titleRow.style.alignItems = 'center';
-        titleRow.style.gap = '0.5rem';
 
         const titleLink = document.createElement('a');
         titleLink.className = 'entry-link';
         titleLink.href = item.permalink;
         titleLink.textContent = item.title;
-        titleLink.style.flex = '1';
-        titleLink.style.fontWeight = '500';
         if (isExternal(item.permalink)) {
             titleLink.target = '_blank';
             titleLink.rel = 'noopener noreferrer';
         }
-
-        titleRow.appendChild(titleLink);
-        li.appendChild(titleRow);
+        li.appendChild(titleLink);
 
         const metaRow = document.createElement('div');
-        metaRow.style.display = 'flex';
-        metaRow.style.alignItems = 'center';
-        metaRow.style.gap = '0.75rem';
-        metaRow.style.fontSize = '0.8rem';
-        metaRow.style.opacity = '0.6';
+        metaRow.className = 'search-meta';
 
         if (item.summary) {
             const date = document.createElement('span');
@@ -122,11 +105,10 @@ const renderResults = (results) => {
             metaRow.appendChild(date);
         }
 
-        if (item.content && isExternal(item.content)) {
+        if (item.content && !isExternal(item.content)) {
             const postLink = document.createElement('a');
             postLink.href = item.content;
-            postLink.textContent = 'View in Crow\'s Nest';
-            postLink.style.textDecoration = 'underline';
+            postLink.textContent = "Crow's Nest";
             metaRow.appendChild(postLink);
         }
 
