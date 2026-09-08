@@ -3,13 +3,14 @@
     {{- if and (not .Params.searchHidden) (ne .Layout `archives`) (ne .Layout `search`) }}
         {{- $postTitle := .Title -}}
         {{- $postDate := .Date.Format "2006-01-02" -}}
+        {{- $postPermalink := .Permalink -}}
         {{- $content := .RawContent -}}
         {{- $links := findRE `- \[[^\]]+\]\([^)]+\)` $content -}}
         {{- if $links -}}
             {{- range $links -}}
                 {{- $title := replaceRE `^.*\[([^\]]+)\]\(([^)]+)\).*$` "$1" . -}}
                 {{- $url := replaceRE `^.*\[([^\]]+)\]\(([^)]+)\).*$` "$2" . -}}
-                {{- $.Scratch.Add "index" (dict "title" $title "permalink" $url "summary" $postTitle "content" $postDate) -}}
+                {{- $.Scratch.Add "index" (dict "title" $title "permalink" $url "summary" $postDate "content" $postPermalink) -}}
             {{- end -}}
         {{- else -}}
             {{- $.Scratch.Add "index" (dict "title" .Title "content" .Plain "permalink" .Permalink "summary" .Summary) -}}
